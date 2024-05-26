@@ -9,7 +9,7 @@ use App\Http\Controllers\PostController;
 //kādus ceļus atļaut publiski un kādus neatļaut
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 Route::resource('posts', PostController::class);
@@ -23,3 +23,7 @@ Route::resource('posts', PostController::class);
 //});
 
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
