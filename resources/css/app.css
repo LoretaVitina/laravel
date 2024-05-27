@@ -1,3 +1,6 @@
 *{
     background-color: #f9ffe5;
 }
+.tweet-image img{
+    border-radius: 200px;
+}

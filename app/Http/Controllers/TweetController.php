@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreTweetRequest;
 use App\Http\Requests\UpdateTweetRequest;
 use App\Models\Tweet;
+use Illuminate\Support\Facades\DB;
 
 class TweetController extends Controller
 {
@@ -13,10 +14,16 @@ class TweetController extends Controller
      */
     public function index()
     {
-        return view('tweets.index');
+        $Tweets = DB::table('tweets')
+            ->join('users', 'tweets.user_id', '=', 'users.id')
+            ->select('tweets.*', 'users.name')
+            ->get();
+
+        return view('tweets.index', ['Tweets' => $Tweets]);
     }
 
-    /**
+
+/**
      * Show the form for creating a new resource.
      */
     public function create()
@@ -37,7 +44,7 @@ class TweetController extends Controller
      */
     public function show(Tweet $tweet)
     {
-        //
+
     }
 
     /**
