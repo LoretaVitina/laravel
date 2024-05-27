@@ -45,21 +45,23 @@ class TweetController extends Controller
      */
     public function store(StoreTweetRequest $request)
     {
-        if(!Auth::check()) {
-            redirect('welcome');
-        }
+        request()->file('path')->store('');
 
-        $request->validate([
-            'text' => 'required|max:280',
-//            'image' => 'nullable|image'
-        ]);
-
-        Tweet::create([
-            'text' => $request->text,
-            'user_id' => Auth::id()
-        ]);
-
-        return redirect('/tweets');
+//        if(!Auth::check()) {
+//            redirect('welcome');
+//        }
+//
+//        $request->validate([
+//            'text' => 'required|max:280',
+////            'path' => 'nullable|image'
+//        ]);
+//
+//        Tweet::create([
+//            'text' => $request->text,
+//            'user_id' => Auth::id()
+//        ]);
+//
+//        return redirect('/tweets');
     }
 
     /**
