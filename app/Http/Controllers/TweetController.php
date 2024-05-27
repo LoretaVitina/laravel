@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreTweetRequest;
 use App\Http\Requests\UpdateTweetRequest;
 use App\Models\Tweet;
+use ErrorException;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -34,7 +35,7 @@ class TweetController extends Controller
     public function create()
     {
         if(!Auth::check()) {
-            redirect('welcome');
+            return redirect('/');
         }
 
         return view('tweets.create');
@@ -45,7 +46,10 @@ class TweetController extends Controller
      */
     public function store(StoreTweetRequest $request)
     {
-        request()->file('path')->store('');
+        throw new ErrorException('Hallo');
+
+//        request()->file('path')->store('');
+        echo "Esmu te";
 
 //        if(!Auth::check()) {
 //            redirect('welcome');
