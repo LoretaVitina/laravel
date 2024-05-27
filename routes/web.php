@@ -9,7 +9,7 @@ use App\Http\Controllers\TweetController;
 //kādus ceļus atļaut publiski un kādus neatļaut
 
 Route::get('/', function () {
-    return view('home');
+    return view('/welcome');
 });
 
 Auth::routes();
@@ -17,3 +17,6 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::resource('tweets', TweetController::class);
+
+Route::get('/tweets/create', [TweetController::class, 'create']);
+Route::post('/tweets', [TweetController::class, 'store']);

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreTweetRequest;
 use App\Http\Requests\UpdateTweetRequest;
 use App\Models\Tweet;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class TweetController extends Controller
@@ -14,6 +15,10 @@ class TweetController extends Controller
      */
     public function index()
     {
+        if(!Auth::check()) {
+            redirect('welcome');
+        }
+
         $Tweets = DB::table('tweets')
             ->join('users', 'tweets.user_id', '=', 'users.id')
             ->select('tweets.*', 'users.name')
@@ -28,7 +33,11 @@ class TweetController extends Controller
      */
     public function create()
     {
-        //
+        if(!Auth::check()) {
+            redirect('welcome');
+        }
+
+        return view('tweets.create');
     }
 
     /**
@@ -36,7 +45,21 @@ class TweetController extends Controller
      */
     public function store(StoreTweetRequest $request)
     {
-        //
+        if(!Auth::check()) {
+            redirect('welcome');
+        }
+
+        $request->validate([
+            'text' => 'required|max:280',
+//            'image' => 'nullable|image'
+        ]);
+
+        Tweet::create([
+            'text' => $request->text,
+            'user_id' => Auth::id()
+        ]);
+
+        return redirect('/tweets');
     }
 
     /**

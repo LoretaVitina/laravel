@@ -2,6 +2,9 @@
 
 @section('content')
     <div class="display-3">All tweets</div>
+    <div class="col-12 text-center">
+        <a href="tweets/create" class="btn btn-success mt-3">{{ __('Create new Tweet')}}</a>
+    </div>
     <main>
         @foreach($Tweets as $tweet)
             <div class="card text-center my-3">

@@ -14,7 +14,14 @@
                     @endif
                     <div>{{ __('You are logged in!') }}</div>
                         <br>
-                        <div class="text-center"><a href="tweets" class="btn btn-primary mt-3">{{ __('See all Tweets')}}</a></div>
+                        <div class="row">
+                            <div class="col-6 text-center">
+                                <a href="tweets" class="btn btn-primary mt-3">{{ __('See all Tweets')}}</a>
+                            </div>
+                            <div class="col-6 text-center">
+                                <a href="tweets/create" class="btn btn-success mt-3">{{ __('Create new Tweet')}}</a>
+                            </div>
+                        </div>
                 </div>
             </div>
         </div>
