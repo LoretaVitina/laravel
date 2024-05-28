@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@php
+    use Carbon\Carbon;
+@endphp
 
 @section('content')
     <div class="display-3">All tweets</div>
@@ -13,7 +16,7 @@
                         @if(is_null($tweet->path))
                             <img src="{{ asset('storage/img/bird.jpg') }}" class="card-img-top" alt="tweet-image" width="200" height="200">
                         @else
-                            <img src="{{ $tweet->path }}" class="card-img-top" alt="tweet-image" width="200" height="200">
+                            <img src="{{ asset( $tweet->path)}}" class="card-img-top" alt="tweet-image" width="200" height="200">
                         @endif
                     </div>
                     <div class="col-sm-10">
@@ -24,7 +27,7 @@
                             <p class="card-text">{{ $tweet->text }}</p>
                         </div>
                         <div class="card-footer text-body-secondary">
-                            {{ $tweet->created_at }}
+                            {{ Carbon::parse($tweet->created_at)->setTimezone('Europe/Riga')->format('d-m-Y h:s')}}
                         </div>
                     </div>
                 </div>

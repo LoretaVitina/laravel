@@ -48,16 +48,21 @@ class TweetController extends Controller
      */
     public function store(Request $request)
     {
-//        return "Hallo from Tweet controller store";
 
         $request->validate([
             'tweet-text' => 'required|max:280',
-            'tweet-image' => 'nullable|image'
+            'tweet-image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
+
+        $path = null;
+        if($request->hasFile('tweet-image')){
+            $path = $request->file('tweet-image')->store('/tweet-images', 'public');
+        }
 
         Tweet::create([
             'user_id' => Auth::id(),
             'text' => $request->input('tweet-text'),
+            'path' => '/storage/' . $path
         ]);
 
         return redirect('/tweets');
