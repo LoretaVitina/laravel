@@ -48,7 +48,6 @@ class TweetController extends Controller
      */
     public function store(Request $request)
     {
-
         $request->validate([
             'tweet-text' => 'required|max:280',
             'tweet-image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
@@ -79,17 +78,15 @@ class TweetController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Tweet $tweet)
+    public function edit($id)
     {
-        //
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateTweetRequest $request, Tweet $tweet)
+    public function update(Request $request, $id)
     {
-        //
     }
 
     /**
@@ -97,6 +94,10 @@ class TweetController extends Controller
      */
     public function destroy(Tweet $tweet)
     {
-        //
+        echo "I'm trying to delete the tweet";
+
+        $tweet->delete();
+
+        return redirect('/tweets');
     }
 }

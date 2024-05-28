@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @php
     use Carbon\Carbon;
+    use Illuminate\Support\Facades\Auth;
 @endphp
 
 @section('content')
@@ -13,7 +14,7 @@
             <div class="card my-3 offset-2" style="width: 80rem">
                 <div class="row">
                     <div class="col-sm-2 tweet-image border-success">
-                        @if(is_null($tweet->path))
+                        @if(($tweet->path) == '/storage/' . null or is_null($tweet->path))
                             <img src="{{ asset('storage/img/bird.jpg') }}" class="card-img-left" alt="tweet-image" width="200" height="200">
                         @else
                             <img src="{{ asset( $tweet->path)}}" class="card-img-left" alt="tweet-image" width="200" height="200">
@@ -29,6 +30,13 @@
                         <div class="card-footer text-body-secondary">
                             {{ Carbon::parse($tweet->created_at)->setTimezone('Europe/Riga')->format('d-m-Y H:s')}}
                         </div>
+                        @if(Auth::id() == $tweet->user_id)
+                            <div class="row my-2">
+                                <div class="col-12 text-center">
+                                    <a href="{{asset('tweets/'. $tweet->id . '/delete') }}" class="btn btn-danger mt-3">Delete</a>
+                                </div>
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>

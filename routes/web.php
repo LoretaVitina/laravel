@@ -24,3 +24,4 @@ Route::resource('tweets', TweetController::class);
 
 Route::get('/tweets/create', [TweetController::class, 'create']);
 Route::post('/tweets/create', [TweetController::class, 'store']);
+Route::delete('/tweets/{tweet}/delete',[TweetController::class, 'destroy']);
