@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreTweetRequest;
 use App\Http\Requests\UpdateTweetRequest;
 use App\Models\Tweet;
-use ErrorException;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -17,12 +17,13 @@ class TweetController extends Controller
     public function index()
     {
         if(!Auth::check()) {
-            redirect('welcome');
+            return redirect('/');
         }
 
         $Tweets = DB::table('tweets')
             ->join('users', 'tweets.user_id', '=', 'users.id')
             ->select('tweets.*', 'users.name')
+            ->orderBy('tweets.created_at', 'desc')
             ->get();
 
         return view('tweets.index', ['Tweets' => $Tweets]);
@@ -39,33 +40,27 @@ class TweetController extends Controller
         }
 
         return view('tweets.create');
+
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreTweetRequest $request)
+    public function store(Request $request)
     {
-        throw new ErrorException('Hallo');
+//        return "Hallo from Tweet controller store";
 
-//        request()->file('path')->store('');
-        echo "Esmu te";
+        $request->validate([
+            'tweet-text' => 'required|max:280',
+            'tweet-image' => 'nullable|image'
+        ]);
 
-//        if(!Auth::check()) {
-//            redirect('welcome');
-//        }
-//
-//        $request->validate([
-//            'text' => 'required|max:280',
-////            'path' => 'nullable|image'
-//        ]);
-//
-//        Tweet::create([
-//            'text' => $request->text,
-//            'user_id' => Auth::id()
-//        ]);
-//
-//        return redirect('/tweets');
+        Tweet::create([
+            'user_id' => Auth::id(),
+            'text' => $request->input('tweet-text'),
+        ]);
+
+        return redirect('/tweets');
     }
 
     /**

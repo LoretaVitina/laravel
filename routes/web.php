@@ -19,4 +19,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('tweets', TweetController::class);
 
 Route::get('/tweets/create', [TweetController::class, 'create']);
-Route::post('/tweets', [TweetController::class, 'store']);
+Route::post('/tweets/create', [TweetController::class, 'store']);
