@@ -4,3 +4,16 @@
 .tweet-image img{
     border-radius: 200px;
 }
+
+.card-text{
+    font-family: "Sacramento", cursive;
+    font-weight: 400;
+    font-size: 36px;
+    font-style: normal;
+}
+
+.display-3{
+    font-family: "Sevillana", cursive;
+    font-weight: 400;
+    font-style: normal;
+}

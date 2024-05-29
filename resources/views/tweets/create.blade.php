@@ -1,7 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="display-3 text-center">Create new Tweet</div>
+    <div class="col-12 text-center">
+        <a href="{{route('tweets.index')}}" class="btn btn-primary mt-3">{{ __('See all Tweets')}}</a>
+    </div>
+    <div class="display-3 mb-4">Create new Tweet</div>
     <div class="row">
         <div class="col-8 offset-2">
             <form action="{{ route('tweets.store') }}" method="POST" enctype="multipart/form-data">
@@ -19,7 +22,9 @@
                     <label for="fileUpload">{{ __('Upload your image here') }}</label>
                     <input type="file" class="form-control-file" id="fileUpload" name="tweet-image" accept="image/*">
                 </div>
-                <button class="btn btn-warning mt-3" type="submit">{{ __('Post the Tweet') }}</button>
+                <div class="col-12 text-center">
+                    <button class="btn btn-warning mt-3" type="submit">{{ __('Post the Tweet') }}</button>
+                </div>
             </form>
         </div>
     </div>

@@ -16,7 +16,7 @@
                         <br>
                         <div class="row">
                             <div class="col-6 text-center">
-                                <a href="tweets" class="btn btn-primary mt-3">{{ __('See all Tweets')}}</a>
+                                <a href="{{ route('tweets.index') }}" class="btn btn-primary mt-3">{{ __('See all Tweets')}}</a>
                             </div>
                             <div class="col-6 text-center">
                                 <a href="tweets/create" class="btn btn-success mt-3">{{ __('Create new Tweet')}}</a>

@@ -12,6 +12,12 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Macondo&family=Sacramento&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Macondo&family=Merienda:wght@300..900&family=Russo+One&family=Sacramento&family=Sevillana&display=swap" rel="stylesheet">
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js', 'resources/css/app.css'])
@@ -78,6 +84,11 @@
         <main class="py-4">
             @yield('content')
         </main>
+        <footer class="footer pt-5">
+            <p class="text-center">&copy Copyright 2024</p>
+            <p class="text-lg-center">Created by Loreta Vitina</p>
+            <p class="text-lg-center"><a href="mailto:loreta.vitina@va.lv">Contact me</a></p>
+        </footer>
     </div>
 </body>
 </html>
