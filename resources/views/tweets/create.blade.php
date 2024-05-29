@@ -4,7 +4,7 @@
     <div class="display-3 text-center">Create new Tweet</div>
     <div class="row">
         <div class="col-8 offset-2">
-            <form action="../tweets/create" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('tweets.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
                     <label for="tweetArea"></label>

@@ -80,6 +80,7 @@ class TweetController extends Controller
      */
     public function edit($id)
     {
+
     }
 
     /**
@@ -92,11 +93,9 @@ class TweetController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Tweet $tweet)
+    public function destroy($id)
     {
-        echo "I'm trying to delete the tweet";
-
-        $tweet->delete();
+        Tweet::where(['id' => $id])->delete();
 
         return redirect('/tweets');
     }
