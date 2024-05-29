@@ -22,6 +22,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::resource('tweets', TweetController::class);
 
-Route::get('/tweets/create', [TweetController::class, 'create']);
-Route::post('/tweets/create', [TweetController::class, 'store']);
-Route::delete('/tweets/{tweet}/delete',[TweetController::class, 'destroy']);
+Route::get('/tweets/create', [TweetController::class, 'create'])->name('tweets.create');
+Route::post('/tweets/create', [TweetController::class, 'store'])->name('tweets.store');
+Route::delete('/tweets/{tweet}/delete',[TweetController::class, 'destroy'])->name('tweets.destroy');

@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="col-12 text-center">
-        <a href="{{route('tweets.index')}}" class="btn btn-primary mt-3">{{ __('See all Tweets')}}</a>
+        <a href="{{ route( 'tweets.index' )}}" class="btn btn-primary mt-3">{{ __('See all Tweets')}}</a>
     </div>
     <div class="display-3 mb-4">Create new Tweet</div>
     <div class="row">
